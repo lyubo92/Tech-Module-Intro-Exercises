@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class vacation {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int group = Integer.parseInt(input.nextLine());
+        String groupType = input.nextLine();
+        String day = input.nextLine();
+        double price = 0;
+        double total = 0;
+        if (groupType.equals("Students")) {
+            if (day.equals("Friday")) {
+                price = 8.45;
+            } else if (day.equals("Saturday")) {
+                price = 9.80;
+            } else if (day.equals("Sunday")) {
+                price = 10.46;
+            }
+            total = group * price;
+            if (group >= 30){
+                total = total*0.85;
+            }
+        } else if (groupType.equals("Business")) {
+            if (day.equals("Friday")) {
+                price = 10.90;
+            } else if (day.equals("Saturday")) {
+                price = 15.60;
+            } else if (day.equals("Sunday")) {
+                price = 16;
+            }
+            if (group >= 100){
+                group = group - 10;
+            }
+            total = group * price;
+        }else if (groupType.equals("Regular")) {
+            if (day.equals("Friday")) {
+                price = 15;
+            } else if (day.equals("Saturday")) {
+                price = 20;
+            } else if (day.equals("Sunday")) {
+                price = 22.5;
+            }
+            total = group * price;
+            if (group >= 10 && group <= 20){
+                total = total*0.95;
+            }
+        }
+        System.out.printf("Total price: %.2f", total);
+    }
+}
