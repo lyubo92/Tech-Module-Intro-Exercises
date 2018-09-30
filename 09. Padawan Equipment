@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class padawanEquipment {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double money = Double.parseDouble(input.nextLine());
+        int students = Integer.parseInt(input.nextLine());
+        double lightsaberPrice = Double.parseDouble(input.nextLine());
+        double robePrice = Double.parseDouble(input.nextLine());
+        double beltPrice = Double.parseDouble(input.nextLine());
+        double lightsabersCost = Math.ceil((students*1.1))* lightsaberPrice;
+        double robeCost = students*robePrice;
+        double beltCost = (students - students/6)*beltPrice;
+        double totalCost = lightsabersCost + robeCost + beltCost;
+        if (money >= totalCost){
+            System.out.printf("The money is enough - it would cost %.2flv.", totalCost);
+        }else{
+            System.out.printf("Ivan Cho will need %.2flv more.", totalCost - money);
+        }
+    }
+}
