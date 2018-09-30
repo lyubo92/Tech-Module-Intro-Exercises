@@ -1,0 +1,78 @@
+import java.io.DataOutput;
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+public class vendingMachine {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String start = input.nextLine();
+        double coin = Double.parseDouble(start);
+        double sum = 0;
+        while (true){
+            if (start.equals("Start")){
+                break;
+            }
+            coin = Double.parseDouble(start);
+            if (coin == 0.1 || coin == 0.2 || coin == 0.5 || coin == 1 || coin == 2){
+                sum += coin;
+            }else{
+                System.out.printf("Cannot accept %.2f%n", coin);
+            }
+            start = input.nextLine();
+        }
+        double bill = 0;
+        String end = input.nextLine();
+        while(true){
+            if (end.equals("End")){
+                break;
+            }
+            switch (end){
+                case "Nuts":
+                    bill += 2;
+                    if (bill > sum){
+                        System.out.println("Sorry, not enough money");
+                        bill -=2;
+                    }else{
+                        System.out.println("Purchased " + end);
+                    }break;
+                case "Water":
+                    bill += 0.7;
+                    if (bill > sum){
+                        System.out.println("Sorry, not enough money");
+                        bill -= 0.7;
+                    }else{
+                        System.out.println("Purchased " + end);
+                    }break;
+                case "Crisps":
+                    bill += 1.5;
+                    if (bill > sum){
+                        System.out.println("Sorry, not enough money");
+                        bill -= 1.5;
+                    }else{
+                        System.out.println("Purchased " + end);
+                    }break;
+                case "Soda":
+                    bill += 0.8;
+                    if (bill > sum){
+                        System.out.println("Sorry, not enough money");
+                        bill -= 0.8;
+                    }else{
+                        System.out.println("Purchased " + end);
+                    }break;
+                case "Coke":
+                    bill += 1;
+                    if (bill > sum){
+                        System.out.println("Sorry, not enough money");
+                        bill -= 1;
+                    }else{
+                        System.out.println("Purchased " + end);
+                    }break;
+                default:
+                    System.out.println("Invalid product");
+            }
+            end = input.nextLine();
+        }
+        double change = sum - bill;
+        System.out.printf("Change: %.2f", change);
+    }
+}
