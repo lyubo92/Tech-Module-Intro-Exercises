@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class strongNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String number = input.nextLine();
+        int length = number.length();
+        int num = Integer.parseInt(number);
+        int num2 = Integer.parseInt(number);
+        int sum = 0;
+        for (int i = length - 1; i >= 0; i--) {
+            int lastNum = num % 10;
+            num = num /10;
+            int factorial = 1;
+            for (int j = lastNum; j > 0; j--) {
+                factorial = factorial * j;
+            }
+            if (lastNum == 0){
+                sum = sum + 1;
+            }else{
+                sum += factorial;
+            }
+
+        }
+        if (sum == num2){
+            System.out.println("yes");
+        }else{
+            System.out.println("no");
+        }
+    }
+}
